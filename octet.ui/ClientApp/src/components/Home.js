@@ -11,7 +11,7 @@ const Home = () => {
     const response = await fetch('/api/octet', {
       method: 'PUT',
       headers: {
-        'Content-Type': 'octet-stream'
+        'Content-Type': 'application/octet-stream'
       },
       body: utf
     })
