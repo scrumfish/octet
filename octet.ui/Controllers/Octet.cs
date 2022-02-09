@@ -11,9 +11,13 @@ namespace octet.ui.Controllers
         [HttpPut]
         public IActionResult Put()
         {
-            var bytes = new byte[4096];
-            Request.Body.ReadAsync(bytes, 0, bytes.Length).Wait();
-            var result = Encoding.UTF8.GetString(bytes);
+            var buffer = new byte[4096];
+            var bytes = new List<byte>();
+            while( Request.Body.ReadAsync(buffer, 0, buffer.Length).Result > 0 )
+            {
+                bytes.AddRange(buffer);
+            }
+            var result = Encoding.UTF8.GetString(bytes.ToArray());
             return Ok(result);
         }
     }
