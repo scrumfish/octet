@@ -6,7 +6,7 @@ namespace octet.ui.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class Octet : ControllerBase
+    public class OctetController : ControllerBase
     {
         [HttpPut]
         public IActionResult Put()
